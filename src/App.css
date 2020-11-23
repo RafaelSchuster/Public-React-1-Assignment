@@ -1,0 +1,10 @@
+.inputBox{
+  position: absolute;
+  height: 500px;
+  width: 400px;
+  left: 45rem;
+  top: 60px;
+}
+ul li{
+  text-decoration: none;
+}
