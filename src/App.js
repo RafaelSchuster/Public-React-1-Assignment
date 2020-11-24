@@ -13,14 +13,24 @@ class App extends React.Component {
   }
   handleNewNotes(newNote){
     this.setState(state=>{
-      return {notes: [newNote, ...state.notes]};
+      return {notes: [...state.notes, newNote]};
     })
   }
+  handleDeletes(id){
+    let confirmation = window.confirm("Are you sure you want to delete this note?")
+    if(confirmation){
+      let arr = this.state.notes;
+    arr.splice(id,1);
+    this.setState({notes : arr});
+    }
+    }
+    
+  
  render(){
    return(
      <div>
     <MyForm onAddNote = {newNote => this.handleNewNotes(newNote)}/>
-    <NotesList notes = {this.state.notes}/>
+    <NotesList notes = {this.state.notes} onNoteDelete = {id => this.handleDeletes(id)}/>
   </div>
    )
  }  

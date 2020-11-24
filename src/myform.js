@@ -2,6 +2,8 @@ import React from 'react';
 import {Button, Container, Form} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+let counter = 0;
+
 class MyForm extends React.Component {
     constructor(props) {
         super(props)
@@ -15,16 +17,16 @@ class MyForm extends React.Component {
     }
     onNoteChange = (event) => {
         this.setState({text : event.target.value});
-
     }
     onSubmiting = (event) => {
         event.preventDefault(); 
         const newNote = {
+            id : counter,
             title : this.state.title,
             text : this.state.text,
             date : new Date().toString().split(' ').slice(0,5).join(' ')
         }
-        console.log(newNote)
+        counter++;
         this.props.onAddNote(newNote);
     }
     render(){

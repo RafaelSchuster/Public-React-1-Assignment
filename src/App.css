@@ -16,4 +16,13 @@ ul li{
 .text{
   font-size: 30px;
 }
-
+.card{
+  margin: 20px;
+  width: 1300px;
+  left: 15rem;
+}
+.delBtn{
+  position: absolute;
+  right: 10px;
+  top:100px;
+}
