@@ -16,12 +16,17 @@ class App extends React.Component {
       return {notes: [...state.notes, newNote]};
     })
   }
-  handleDeletes(id){
+  handleDeletes(date){
     let confirmation = window.confirm("Are you sure you want to delete this note?")
     if(confirmation){
       let arr = this.state.notes;
-      console.log(arr)
-    arr.splice(id,1);
+      let indexForDelete;
+       arr.forEach(element => {
+        if(element.date === date){
+          indexForDelete = arr.indexOf(element)
+      }})
+    console.log(arr,date, indexForDelete)
+    arr.splice(indexForDelete,1);
     this.setState({notes : arr});
     }
     }

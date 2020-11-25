@@ -4,8 +4,8 @@ import Modal from 'react-modal';
 Modal.setAppElement('#root')
 
 function NoteItem(props) {
-    const onDelete = (id) =>{
-        props.onDeleting(id);
+    const onDelete = (date) =>{
+        props.onDeleting(date);
     }
         const [modalIsOpen, setModalIsOpen] = useState(false)
         return (
@@ -16,13 +16,18 @@ function NoteItem(props) {
             <div className="card-body">
             <h2 className="card-title">{props.title.toUpperCase()}</h2>
             <h3 className="text-muted text">{props.text}</h3>
-            <button className="btn btn-warning delBtn" onClick={() => onDelete(props.id)}>Delete</button>
+            <button className="btn btn-warning delBtn" onClick={() => onDelete(props.date)}>Delete</button>
             <button type="button" className = "btn btn-outline-success openModalBtn" onClick={()=>setModalIsOpen(true)}>Open Modal</button>
             <Modal 
             style={
                 {overlay:{backgroundColor : 'gray' },
-                content:{color : 'rgb(4, 5, 19)'}
-                }
+                content:{color : 'rgb(4, 5, 19)',
+                top: '100px',
+            width : '50%',
+            height : '70%',
+            display: 'block',
+            marginLeft : 'auto',
+            marginRight : 'auto' }}  
             }
             isOpen={modalIsOpen} 
             onRequestClose={()=>setModalIsOpen(false)}>
@@ -34,6 +39,7 @@ function NoteItem(props) {
                      onClick= {()=> setModalIsOpen(false)} > 
                      Close Modal
                      </button>
+                     <button type="button" class="btn btn-outline-info btn-lg btn-block editNoteBtn">Edit Note</button>
                 </div>
                 </Modal>
             </div>

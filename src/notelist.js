@@ -2,8 +2,8 @@ import React from 'react';
 import NoteItem from './noteitem';
 
 class NotesList extends React.Component{
-    deleting(id){
-        this.props.onNoteDelete(id)
+    deleting(date){
+        this.props.onNoteDelete(date)
     }
     render(){
         return <ul className="grid">
@@ -14,7 +14,7 @@ class NotesList extends React.Component{
                 text = {note.text}
                 date ={note.date}
                 id = {note.id}
-                onDeleting = {id => this.deleting(id)} />
+                onDeleting = {date => this.deleting(date)} />
             )}
         </ul>  
         }

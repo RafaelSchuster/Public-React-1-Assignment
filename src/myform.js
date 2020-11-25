@@ -48,7 +48,8 @@ class MyForm extends React.Component {
                     as="textarea" rows={5}
                     name='note'
                     id='note'
-                    onChange ={event => this.onNoteChange(event)} />
+                    onChange ={event => this.onNoteChange(event)}
+                    required />
                     <Button 
                     className='btn btn-info btn-lg btn-block m-3' 
                     type ='submit' 
