@@ -20,6 +20,7 @@ class App extends React.Component {
     let confirmation = window.confirm("Are you sure you want to delete this note?")
     if(confirmation){
       let arr = this.state.notes;
+      console.log(arr)
     arr.splice(id,1);
     this.setState({notes : arr});
     }

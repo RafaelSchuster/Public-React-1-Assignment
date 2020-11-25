@@ -26,3 +26,13 @@ ul li{
   right: 10px;
   top:100px;
 }
+.openModalBtn{
+  position: absolute;
+  top: 10px;
+  right: 5px;
+}
+.closeModalBtn{
+  position: absolute;
+  right: 0;
+  top: 0;
+}
