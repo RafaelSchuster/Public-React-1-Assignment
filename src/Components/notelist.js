@@ -3,7 +3,10 @@ import NoteItem from './noteitem';
 
 class NotesList extends React.Component{
     deleting(date){
-        this.props.onNoteDelete(date)
+        this.props.onNoteDelete(date);
+    }
+    noteChanging(title, text, date){
+        this.props.noteChange(title, text, date);
     }
     render(){
         return <ul className="grid">
@@ -13,8 +16,8 @@ class NotesList extends React.Component{
                 title={note.title}
                 text = {note.text}
                 date ={note.date}
-                id = {note.id}
-                onDeleting = {date => this.deleting(date)} />
+                onDeleting = {date => this.deleting(date)}
+                onEditing= {(title,text,date) => this.noteChanging(title, text, date)}/>
             )}
         </ul>  
         }

@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import MyForm from './myform';
-import NotesList from './notelist';
+import MyForm from './Components/myform';
+import NotesList from './Components/notelist';
 
 class App extends React.Component {
   constructor(props){
@@ -17,27 +17,42 @@ class App extends React.Component {
     })
   }
   handleDeletes(date){
-    let confirmation = window.confirm("Are you sure you want to delete this note?")
+    let confirmation = window.confirm("Are you sure you want to delete this note?");
     if(confirmation){
       let arr = this.state.notes;
       let indexForDelete;
-       arr.forEach(element => {
+      arr.forEach(element => {
         if(element.date === date){
-          indexForDelete = arr.indexOf(element)
-      }})
-    console.log(arr,date, indexForDelete)
+          indexForDelete = arr.indexOf(element);
+      };
+    });
     arr.splice(indexForDelete,1);
     this.setState({notes : arr});
+      };
     }
-    }
-    
-  
- render(){
-   return(
-     <div>
-    <MyForm onAddNote = {newNote => this.handleNewNotes(newNote)}/>
-    <NotesList notes = {this.state.notes} onNoteDelete = {id => this.handleDeletes(id)}/>
-  </div>
+
+    changeNote(title, text, date){
+      let confirmation = window.confirm("Are you sure you want to change this note?");
+      if(confirmation){
+        let arr2 = this.state.notes;
+        let indexForEdit;
+        arr2.forEach(element => {
+        if(element.date === date){
+          indexForEdit = arr2.indexOf(element);
+        }})
+          if(title){arr2[indexForEdit].title = title};
+          if(text){arr2[indexForEdit].text = text; arr2[indexForEdit].date = new Date().toString().split(' ').slice(0,5).join(' ') };
+          this.setState({notes : arr2});
+          };
+      }    
+    render(){
+      return(
+        <div>
+        <MyForm onAddNote = {newNote => this.handleNewNotes(newNote)}/>
+        <NotesList notes = {this.state.notes} 
+          onNoteDelete = {date => this.handleDeletes(date)} 
+          noteChange = {(title,text, date) => this.changeNote(title,text, date) }/>
+      </div>
    )
  }  
 }
