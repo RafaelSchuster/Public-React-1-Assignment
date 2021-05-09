@@ -44,7 +44,8 @@ class App extends React.Component {
           if(text){arr2[indexForEdit].text = text; arr2[indexForEdit].date = new Date().toString().split(' ').slice(0,5).join(' ') };
           this.setState({notes : arr2});
           };
-      }    
+      }
+          
     render(){
       return(
         <div>
